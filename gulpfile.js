@@ -9,11 +9,9 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	concat = require('gulp-concat'),
 	autoprefixer = require('gulp-autoprefixer'),
-	handlebars = require('gulp-compile-handlebars'),
 	rename = require('gulp-rename'),
 	plumber = require('gulp-plumber'),
-	notify = require('gulp-notify'),
-	templateData = require('./app/data/data.json');
+	notify = require('gulp-notify');
 
 console.info('********** Bower Files **********');
 console.info(bowerFiles);
@@ -23,8 +21,8 @@ console.info(bowerFiles);
  ******************************/
 gulp.task('default', [
 	'copyAssets',
+	'copyViews',
 	'browser-sync',
-	'handlebars',
 	'pluginsConcat',
 	'jsConcat',
 	'less',
@@ -36,7 +34,7 @@ gulp.task('default', [
  ******************************/
 gulp.task('build', [
 	'copyAssets',
-	'handlebars',
+	'copyViews',
 	'pluginsConcat',
 	'jsConcat',
 	'less-min'
@@ -55,26 +53,12 @@ gulp.task('copyAssets', function () {
 });
 
 /******************************
- * Handlebars
+ * Copy views to public
  ******************************/
-gulp.task('handlebars', function () {
-	gulp.src('app/templates/*.handlebars')
-		.pipe(handlebars(templateData, {
-			ignorePartials: true, //ignores the unknown partials
-			partials: {
-				footer: '<footer>the end</footer>'
-			},
-			batch: ['./app/templates/partials'],
-			helpers: {
-				capitals: function (str) {
-					return str.fn(this).toUpperCase();
-				}
-			}
-		}))
-		.pipe(rename({
-			extname: '.html'
-		}))
-		.pipe(gulp.dest('./public'));
+gulp.task('copyViews', function () {
+	'use strict';
+	gulp.src('app/**/*html')
+		.pipe(gulp.dest('public'));
 });
 
 /******************************
@@ -83,22 +67,22 @@ gulp.task('handlebars', function () {
 gulp.task('pluginsConcat', function () {
 	gulp.src(bowerFiles)
 		.pipe(concat('plugins.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('public/js'));
+	// .pipe(uglify())
+	.pipe(gulp.dest('public/js'));
 });
 
 /******************************
  * JS concat
  ******************************/
 gulp.task('jsConcat', function () {
-	gulp.src(['app/js/**/*.js'])
+	gulp.src(['app/**/*.js'])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(concat('app.js'))
-		.pipe(uglify())
-		.on('error', notify.onError(function (error) {
-			return '\nAn error occurred while uglifying js.\nLook in the console for details.\n' + error;
-		}))
+	// .pipe(uglify())
+	.on('error', notify.onError(function (error) {
+		return '\nAn error occurred while uglifying js.\nLook in the console for details.\n' + error;
+	}))
 		.pipe(sourcemaps.write('../js'))
 		.pipe(gulp.dest('public/js'));
 });
@@ -125,16 +109,17 @@ gulp.task('browser-sync', function () {
  * Watch
  ******************************/
 gulp.task('watch', function () {
-	gulp.watch('app/less/*.less', ['less']);
-	gulp.watch('app/js/**/*.js', ['jsConcat']);
-	gulp.watch('app/templates/**/*.handlebars', ['handlebars']);
+	gulp.watch('assets/less/*.less', ['less']);
+	gulp.watch('app/**/*.js', ['jsConcat']);
+	gulp.watch('app/**/*.html', ['copyViews']);
+	gulp.watch(['assets/**/*.*', '!assets/less/*.less'], ['copyAssets']);
 });
 
 /******************************
  * Less
  ******************************/
 gulp.task('less', function () {
-	gulp.src('app/less/app.less')
+	gulp.src('assets/less/app.less')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(less())
@@ -153,7 +138,7 @@ gulp.task('less', function () {
  * Less min
  ******************************/
 gulp.task('less-min', function () {
-	gulp.src('app/less/app.less')
+	gulp.src('assets/less/app.less')
 		.pipe(plumber())
 		.pipe(less())
 		.on('error', notify.onError(function (error) {
