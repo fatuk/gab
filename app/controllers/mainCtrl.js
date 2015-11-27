@@ -1,8 +1,16 @@
-angular.module('mainCtrl', [])
-	.controller('MainCtrl', [
-		'$scope',
-		function ($scope) {
-			'use strict';
+(function () {
+	'use strict';
+	angular.module('mainCtrl', [])
+		.controller('MainCtrl', [
+			'$scope',
+			'$log',
+			mainCtrl
+		]);
 
-		}
-	]);
+	function mainCtrl($scope, $log) {
+		$log.log('Main ctrl');
+
+		$scope.myCheckbox = true;
+	}
+
+})();

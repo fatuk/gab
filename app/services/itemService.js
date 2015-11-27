@@ -1,26 +1,36 @@
-app.service('ItemService', ['$http', '$q',
-	function ($http, $q) {
-		'use strict';
-		var item = this;
-		item.items = {};
+(function () {
+	'use strict';
+	angular.module('itemService', []).
+	factory('ItemService', [
+		'API_PATH',
+		'$http',
+		'$q',
+		'$log',
+		itemService
+	]);
 
-		filter.getItems = function () {
-			var url = 'api/url/',
+	function itemService(API_PATH, $http, $q, $log) {
+		var service = {
+			getItem: getItem
+		};
+		return service;
+
+		function getItem() {
+			var url = API_PATH + 'data.json',
 				defer = $q.defer();
+
 			$http.get(url)
 				.success(function (data) {
-					filter.types = data;
 					defer.resolve(data);
 				})
-				.error(function (data) {
+				.error(function (res, errCode) {
 					defer.reject({
-						error: 'api access [%s] error!'.replace('%s', url)
+						code: errCode,
+						text: 'api access [%s] error!'.replace('%s', url)
 					});
 				});
 
 			return defer.promise;
-		};
-
-		return item;
+		}
 	}
-]);
+})();

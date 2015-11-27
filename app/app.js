@@ -1,7 +1,8 @@
 var app = angular.module('myApp', [
-	'ngRoute',
-	'mainCtrl'
-])
+		'ngRoute',
+		'checkboxDirective',
+		'mainCtrl'
+	])
 	.config([
 		'$routeProvider',
 
