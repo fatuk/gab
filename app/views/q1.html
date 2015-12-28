@@ -34,7 +34,7 @@
 							Operation
 						</td>
 						<td>
-							initiativePlus: {{q1.initiativePlus}} - initiativeMinus: {{q1.initiativeMinus}} + Start balance: {{q1.startBalance}} = {{q1.initiativePlus - q1.initiativeMinus + q1.startBalance}}
+							initiativeRevenue: {{q1.initiativeRevenue}} - initiativeExpense: {{q1.initiativeExpense}} + Start balance: {{q1.startBalance}} = {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}}
 						</td>
 						<td>
 							Some text
@@ -46,7 +46,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input type="number" ng-model="q1.initiativePlus">
+							<input type="number" ng-model="q1.initiativeRevenue">
 						</td>
 						<td>
 							Some text
@@ -82,7 +82,7 @@
 							Total
 						</td>
 						<td>
-							Operations: {{q1.initiativePlus - q1.initiativeMinus + q1.startBalance}} + q1.initiativePlus: {{q1.initiativePlus}} + Activities: {{activity}} + q1.Quiz: {{q1.quiz}} = {{q1.initiativePlus - q1.initiativeMinus + q1.startBalance + q1.initiativePlus + activity + q1.quiz}}
+							Operations: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}} + q1.initiativeRevenue: {{q1.initiativeRevenue}} + Activities: {{activity}} + q1.Quiz: {{q1.quiz}} = {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz}}
 						</td>
 						<td>
 							Some text
@@ -127,7 +127,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input type="number" ng-model="q1.initiativeMinus">
+							<input type="number" ng-model="q1.initiativeExpense">
 						</td>
 						<td>
 							Some text
@@ -151,7 +151,7 @@
 							Total
 						</td>
 						<td>
-							Budget: {{budget}} + Initiatives: {{q1.initiativeMinus}} + Events: {{eventMoney}} = {{budget + q1.initiativeMinus + eventMoney}}
+							Budget: {{budget}} + Initiatives: {{q1.initiativeExpense}} + Events: {{eventMoney}} = {{budget + q1.initiativeExpense + eventMoney}}
 						</td>
 						<td>
 							Some text
@@ -171,7 +171,7 @@
 							Profit
 						</td>
 						<td>
-							Total revenue: {{q1.initiativePlus - q1.initiativeMinus + q1.startBalance + q1.initiativePlus + activity + q1.quiz}} - Total expense: {{budget + q1.initiativeMinus + eventMoney}} = {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance + q1.initiativePlus + activity + q1.quiz)-(budget + q1.initiativeMinus + eventMoney)}}
+							Total revenue: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz}} - Total expense: {{budget + q1.initiativeExpense + eventMoney}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz)-(budget + q1.initiativeExpense + eventMoney)}}
 						</td>
 						<td>
 							Some text
@@ -183,7 +183,7 @@
 							Bonus
 						</td>
 						<td>
-							{{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance)*0.1}}
+							{{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}}
 						</td>
 						<td>
 							10% from Operation
@@ -203,7 +203,7 @@
 							Total earnings
 						</td>
 						<td>
-							Profit: {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance + q1.initiativePlus + activity)-(budget + q1.initiativeMinus + eventMoney)}} + Bonus: {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance)*0.1}} = {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance + q1.initiativePlus + activity)-(budget + q1.initiativeMinus + eventMoney)+((q1.initiativePlus - q1.initiativeMinus + q1.startBalance)*0.1)}}
+							Profit: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity)-(budget + q1.initiativeExpense + eventMoney)}} + Bonus: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity)-(budget + q1.initiativeExpense + eventMoney)+((q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1)}}
 						</td>
 						<td>
 							Some text
@@ -223,7 +223,7 @@
 							Total profit from normal operations (operations For Q2):
 						</td>
 						<td>
-							Operations: {{q1.initiativePlus - q1.initiativeMinus + q1.startBalance}} + Bonus: {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance)*0.1}} = {{(q1.initiativePlus - q1.initiativeMinus + q1.startBalance)+((q1.initiativePlus - q1.initiativeMinus + q1.startBalance)*0.1)}}
+							Operations: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}} + Bonus: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)+((q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1)}}
 						</td>
 						<td>
 							Start balance for next quarter
