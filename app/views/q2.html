@@ -1,0 +1,234 @@
+<fieldset
+	ng-init="toggleQ2=true">
+	<legend
+		class="legend"
+		ng-click="toggleQ2 = !toggleQ2">
+		Q2
+	</legend>
+	<div ng-show="toggleQ2">
+		<!-- Revenue -->
+		<fieldset>
+			<legend>Revenue:</legend>
+			<table>
+				<thead>
+					<tr>
+						<td>
+							Revenue
+						</td>
+						<td>
+							Total
+						</td>
+						<td>
+							Explanation
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Operations -->
+					<tr>
+						<td>
+							Operation
+						</td>
+						<td>
+							(Clean Q1 Operations + Q1 Bonus): {{q1OperationsAndBonus}} + Q2 Clean Initiatives: {{q2.initiativePlus - q2.initiativeMinus}} = {{q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus)}}
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Initiatives -->
+					<tr>
+						<td>
+							Initiatives
+						</td>
+						<td>
+							<input type="number" ng-model="q2.initiativePlus">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Activites -->
+					<tr>
+						<td>
+							Activites
+						</td>
+						<td>
+							<input type="number" ng-model="q2.activity">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Quiz -->
+					<tr>
+						<td>
+							Quiz
+						</td>
+						<td>
+							<input type="number" ng-model="q2.quiz">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Total -->
+					<tr>
+						<td>
+							Total
+						</td>
+						<td>
+							q2.Operations: {{q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus)}} + q2.initiativePlus: {{q2.initiativePlus}} + q2.Activities: {{q2.activity}} + q2.Quiz: {{q2.quiz}} = {{(q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus)) + q2.startBalance + q2.initiativePlus + q2.activity + q2.quiz}}
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<!-- Expense -->
+		<fieldset>
+			<legend>Expense:</legend>
+			<table>
+				<thead>
+					<tr>
+						<td>
+							Expense
+						</td>
+						<td>
+							Total
+						</td>
+						<td>
+							Explanation
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Budget -->
+					<tr>
+						<td>
+							Budget
+						</td>
+						<td>
+							<input type="number" ng-model="q2.budget">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Initiatives -->
+					<tr>
+						<td>
+							Initiatives
+						</td>
+						<td>
+							<input type="number" ng-model="q2.initiativeMinus">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Events -->
+					<tr>
+						<td>
+							Events
+						</td>
+						<td>
+							<input type="number" ng-model="q2.eventMoney">
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Total -->
+					<tr>
+						<td>
+							Total
+						</td>
+						<td>
+							Budget: {{q2.budget}} + Initiatives: {{q2.initiativeMinus}} + Events: {{q2.eventMoney}} = {{q2.budget + q2.initiativeMinus + q2.eventMoney}}
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<!-- Profit and bonus -->
+		<fieldset>
+			<legend>Profit and bonus:</legend>
+			<table>
+				<tbody>
+					<!-- Profit -->
+					<tr>
+						<td>
+							Profit
+						</td>
+						<td>
+							Total revenue: {{q2.initiativePlus - q2.initiativeMinus + q2.startBalance + q2.initiativePlus + q2.activity + q2.quiz}} - Total expense: {{q2.budget + q2.initiativeMinus + q2.eventMoney}} = {{(q2.initiativePlus - q2.initiativeMinus + q2.startBalance + q2.initiativePlus + q2.activity + q2.quiz)-(q2.budget + q2.initiativeMinus + q2.eventMoney)}}
+						</td>
+						<td>
+							Some text
+						</td>
+					</tr>
+					<!-- Bonus -->
+					<tr>
+						<td>
+							Bonus
+						</td>
+						<td>
+							{{(q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))*0.1}}
+						</td>
+						<td>
+							10% from Operation
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<!-- Total earnings -->
+		<fieldset>
+			<legend>Total earnings:</legend>
+			<table>
+				<tbody>
+					<!-- Total -->
+					<tr>
+						<td>
+							Total earnings
+						</td>
+						<td>
+							Profit: {{(q2.initiativePlus - q2.initiativeMinus + q2.startBalance + q2.initiativePlus + q2.activity + q2.quiz)-(q2.budget + q2.initiativeMinus + q2.eventMoney)}} + Bonus: {{(q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))*0.1}} = {{(q2.initiativePlus - q2.initiativeMinus + q2.startBalance + q2.initiativePlus + q2.activity + q2.quiz)-(q2.budget + q2.initiativeMinus + q2.eventMoney)+((q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))*0.1)}}
+						</td>
+						<td>
+							Profit Q2 + Bonus Q2
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<!-- Start balance for next quarter -->
+		<fieldset>
+			<legend>Total profit from normal operations:</legend>
+			<table>
+				<tbody>
+					<!-- Total -->
+					<tr>
+						<td>
+							Total profit from normal operations (operations For Q3):
+						</td>
+						<td>
+							Operations: {{q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus)}} +
+							Bonus: {{(q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))*0.1}} =
+							{{(q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))+((q1OperationsAndBonus + (q2.initiativePlus - q2.initiativeMinus))*0.1)}}
+						</td>
+						<td>
+							Operations Q2 + Bonus Q2
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</div>
+</fieldset>
