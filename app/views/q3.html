@@ -1,16 +1,17 @@
-<fieldset ng-init="toggleQ1=false">
+<fieldset
+	ng-init="toggleQ3=false">
 	<legend
 		class="legend"
-		ng-click="toggleQ1 = !toggleQ1">
-		Q1 |
+		ng-click="toggleQ3 = !toggleQ3">
+		Q3 |
 			Current balance: <strong>{{
-				q1.currentBalance | currency:"$":0
+				q3.currentBalance | currency:"$":0
 			}}</strong>,
 			Operations: <strong>{{
-				q1.operations | currency:"$":0
+				q3.operations | currency:"$":0
 			}}</strong>
 	</legend>
-	<div ng-show="toggleQ1">
+	<div ng-show="toggleQ3">
 		<!-- Revenue -->
 		<fieldset>
 			<legend>Revenue:</legend>
@@ -35,10 +36,10 @@
 							Operations
 						</td>
 						<td>
-							{{q1.operations | currency:"$":0}}
+							{{q3.operations | currency:"$":0}}
 						</td>
 						<td>
-							Operation for Q1 = Start Balance + Profit from Initiative Q1 (which is InitRevenue - InitExpense)
+							Operation for Q3 = Operation Q1 + Bonus + Profit from Initiative Q3 (which is InitRevenue - InitExpense)
 						</td>
 					</tr>
 					<!-- Initiatives -->
@@ -47,7 +48,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.initiativeRevenue">
+							<input step="500" type="number" ng-model="q3.initiativeRevenue">
 						</td>
 						<td>
 							Initiatives Revenue
@@ -59,19 +60,19 @@
 							Activites
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.activity">
+							<input step="500" type="number" ng-model="q3.activity">
 						</td>
 						<td>
 							Correct answers + time bonus
 						</td>
 					</tr>
-					<!-- q1.Quiz -->
+					<!-- Quiz -->
 					<tr>
 						<td>
 							Quiz
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.quiz" readonly>
+							<input step="500" type="number" ng-model="q3.quiz">
 						</td>
 						<td>
 							We do NOT reward $ for quiz
@@ -83,10 +84,10 @@
 							Total
 						</td>
 						<td>
-							{{q1.totalRevenue | currency:"$":0}}
+							{{q3.totalRevenue | currency:"$":0}}
 						</td>
 						<td>
-							Sum of (Operation Q1 + Init Revenue + Activity + Quiz)
+							Sum of (Operation Q3 + Init Revenue + Activity + Quiz)
 						</td>
 					</tr>
 				</tbody>
@@ -116,7 +117,7 @@
 							Budget
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.budget">
+							<input step="500" type="number" ng-model="q3.budget">
 						</td>
 						<td>
 							Total spend on budget items
@@ -128,7 +129,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.initiativeExpense">
+							<input step="500" type="number" ng-model="q3.initiativeExpense">
 						</td>
 						<td>
 							Initiatives Expense
@@ -140,7 +141,7 @@
 							Events
 						</td>
 						<td>
-							<input step="500" type="number" ng-model="q1.eventMoney">
+							<input step="500" type="number" ng-model="q3.eventMoney">
 						</td>
 						<td>
 							Events Expense
@@ -152,7 +153,7 @@
 							Total
 						</td>
 						<td>
-							{{q1.budget + q1.initiativeExpense + q1.eventMoney | currency:"$":0}}
+							{{q3.totalExpense | currency:"$":0}}
 						</td>
 						<td>
 							Sum of (Budget + Init expense + Event)
@@ -172,7 +173,7 @@
 							Profit
 						</td>
 						<td>
-							{{q1.profit | currency:"$":0}}
+							{{q3.profit | currency:"$":0}}
 						</td>
 						<td>
 							Total Revenue - Total Expense
@@ -184,10 +185,10 @@
 							Bonus
 						</td>
 						<td>
-							{{q1.bonus | currency:"$":0}}
+							{{q3.bonus | currency:"$":0}}
 						</td>
 						<td>
-							10% from Operation Q1
+							10% from Operation
 						</td>
 					</tr>
 				</tbody>
@@ -204,10 +205,10 @@
 							Total earnings
 						</td>
 						<td>
-							{{q1.totalEarnings | currency:"$":0}}
+							{{q3.totalEarnings | currency:"$":0}}
 						</td>
 						<td>
-							Profit + Bonus
+							Profit Q3 + Bonus Q3
 						</td>
 					</tr>
 				</tbody>
@@ -221,13 +222,13 @@
 					<!-- Total -->
 					<tr>
 						<td>
-							Total profit from normal operations:
+							Total profit from normal operations (operations For Q3):
 						</td>
 						<td>
-							{{q1.operationsAndBonus | currency:"$":0}}
+							{{q3.operationsAndBonus | currency:"$":0}}
 						</td>
 						<td>
-							Operation Q1 + Bonus
+							Operations Q3 + Bonus Q3 (start operation for Q3)
 						</td>
 					</tr>
 				</tbody>

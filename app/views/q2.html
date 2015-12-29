@@ -1,9 +1,15 @@
 <fieldset
-	ng-init="toggleQ2=true">
+	ng-init="toggleQ2=false">
 	<legend
 		class="legend"
 		ng-click="toggleQ2 = !toggleQ2">
-		Q2
+		Q2 |
+			Current balance: <strong>{{
+				q2.currentBalance | currency:"$":0
+			}}</strong>,
+			Operations: <strong>{{
+				q2.operations | currency:"$":0
+			}}</strong>
 	</legend>
 	<div ng-show="toggleQ2">
 		<!-- Revenue -->
@@ -27,10 +33,10 @@
 					<!-- Operations -->
 					<tr>
 						<td>
-							Operation
+							Operations
 						</td>
 						<td>
-							(Clean Q1 Operations + Q1 Bonus): {{q1OperationsAndBonus}} + Q2 Clean Initiatives: {{q2.initiativeRevenue - q2.initiativeExpense}} = {{q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)}}
+							{{q2.operations | currency:"$":0}}
 						</td>
 						<td>
 							Operation for Q2 = Operation Q1 + Bonus + Profit from Initiative Q2 (which is InitRevenue - InitExpense)
@@ -42,7 +48,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input type="number" ng-model="q2.initiativeRevenue">
+							<input step="500" type="number" ng-model="q2.initiativeRevenue">
 						</td>
 						<td>
 							Initiatives Revenue
@@ -54,7 +60,7 @@
 							Activites
 						</td>
 						<td>
-							<input type="number" ng-model="q2.activity">
+							<input step="500" type="number" ng-model="q2.activity">
 						</td>
 						<td>
 							Correct answers + time bonus
@@ -66,7 +72,7 @@
 							Quiz
 						</td>
 						<td>
-							<input type="number" ng-model="q2.quiz">
+							<input step="500" type="number" ng-model="q2.quiz">
 						</td>
 						<td>
 							We do NOT reward $ for quiz
@@ -78,7 +84,7 @@
 							Total
 						</td>
 						<td>
-							q2.Operations: {{q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)}} + q2.initiativeRevenue: {{q2.initiativeRevenue}} + q2.Activities: {{q2.activity}} + q2.Quiz: {{q2.quiz}} = {{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)) + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz}}
+							{{q2.totalRevenue | currency:"$":0}}
 						</td>
 						<td>
 							Sum of (Operation Q2 + Init Revenue + Activity + Quiz)
@@ -111,7 +117,7 @@
 							Budget
 						</td>
 						<td>
-							<input type="number" ng-model="q2.budget">
+							<input step="500" type="number" ng-model="q2.budget">
 						</td>
 						<td>
 							Total spend on budget items
@@ -123,7 +129,7 @@
 							Initiatives
 						</td>
 						<td>
-							<input type="number" ng-model="q2.initiativeExpense">
+							<input step="500" type="number" ng-model="q2.initiativeExpense">
 						</td>
 						<td>
 							Initiatives Expense
@@ -135,7 +141,7 @@
 							Events
 						</td>
 						<td>
-							<input type="number" ng-model="q2.eventMoney">
+							<input step="500" type="number" ng-model="q2.eventMoney">
 						</td>
 						<td>
 							Events Expense
@@ -147,7 +153,7 @@
 							Total
 						</td>
 						<td>
-							Budget: {{q2.budget}} + Initiatives: {{q2.initiativeExpense}} + Events: {{q2.eventMoney}} = {{q2.budget + q2.initiativeExpense + q2.eventMoney}}
+							{{q2.totalExpense | currency:"$":0}}
 						</td>
 						<td>
 							Sum of (Budget + Init expense + Event)
@@ -167,7 +173,7 @@
 							Profit
 						</td>
 						<td>
-							Total revenue: {{q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz}} - Total expense: {{q2.budget + q2.initiativeExpense + q2.eventMoney}} = {{(q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz)-(q2.budget + q2.initiativeExpense + q2.eventMoney)}}
+							{{q2.profit | currency:"$":0}}
 						</td>
 						<td>
 							Total Revenue - Total Expense
@@ -179,7 +185,7 @@
 							Bonus
 						</td>
 						<td>
-							{{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1}}
+							{{q2.bonus | currency:"$":0}}
 						</td>
 						<td>
 							10% from Operation
@@ -199,7 +205,7 @@
 							Total earnings
 						</td>
 						<td>
-							Profit: {{(q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz)-(q2.budget + q2.initiativeExpense + q2.eventMoney)}} + Bonus: {{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1}} = {{(q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz)-(q2.budget + q2.initiativeExpense + q2.eventMoney)+((q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1)}}
+							{{q2.totalEarnings | currency:"$":0}}
 						</td>
 						<td>
 							Profit Q2 + Bonus Q2
@@ -219,9 +225,7 @@
 							Total profit from normal operations (operations For Q3):
 						</td>
 						<td>
-							Operations: {{q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)}} +
-							Bonus: {{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1}} =
-							{{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))+((q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1)}}
+							{{q2.operationsAndBonus | currency:"$":0}}
 						</td>
 						<td>
 							Operations Q2 + Bonus Q2 (start operation for Q3)
