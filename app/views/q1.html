@@ -1,4 +1,4 @@
-<fieldset ng-init="toggleQ1=false">
+<fieldset ng-init="toggleQ1=true">
 	<legend
 		class="legend"
 		ng-click="toggleQ1 = !toggleQ1">
@@ -37,7 +37,7 @@
 							initiativeRevenue: {{q1.initiativeRevenue}} - initiativeExpense: {{q1.initiativeExpense}} + Start balance: {{q1.startBalance}} = {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}}
 						</td>
 						<td>
-							Some text
+							Operation for Q1 = Start Balance + Profit from Initiative Q1 (which is InitRevenue - InitExpense)
 						</td>
 					</tr>
 					<!-- Initiatives -->
@@ -49,7 +49,7 @@
 							<input type="number" ng-model="q1.initiativeRevenue">
 						</td>
 						<td>
-							Some text
+							Initiatives Revenue
 						</td>
 					</tr>
 					<!-- Activites -->
@@ -61,7 +61,7 @@
 							<input type="number" ng-model="q1.activity">
 						</td>
 						<td>
-							Some text
+							Correct answers + time bonus
 						</td>
 					</tr>
 					<!-- q1.Quiz -->
@@ -73,7 +73,7 @@
 							<input type="number" ng-model="q1.quiz">
 						</td>
 						<td>
-							Some text
+							We do NOT reward $ for quiz
 						</td>
 					</tr>
 					<!-- Total -->
@@ -85,7 +85,7 @@
 							Operations: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}} + q1.initiativeRevenue: {{q1.initiativeRevenue}} + Activities: {{activity}} + q1.Quiz: {{q1.quiz}} = {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz}}
 						</td>
 						<td>
-							Some text
+							Sum of (Operation Q1 + Init Revenue + Activity + Quiz)
 						</td>
 					</tr>
 				</tbody>
@@ -118,7 +118,7 @@
 							<input type="number" ng-model="q1.budget">
 						</td>
 						<td>
-							Some text
+							Total spend on budget items
 						</td>
 					</tr>
 					<!-- Initiatives -->
@@ -130,7 +130,7 @@
 							<input type="number" ng-model="q1.initiativeExpense">
 						</td>
 						<td>
-							Some text
+							Initiatives Expense
 						</td>
 					</tr>
 					<!-- Events -->
@@ -142,7 +142,7 @@
 							<input type="number" ng-model="q1.eventMoney">
 						</td>
 						<td>
-							Some text
+							Events Expense
 						</td>
 					</tr>
 					<!-- Total -->
@@ -154,7 +154,7 @@
 							Budget: {{budget}} + Initiatives: {{q1.initiativeExpense}} + Events: {{eventMoney}} = {{budget + q1.initiativeExpense + eventMoney}}
 						</td>
 						<td>
-							Some text
+							Sum of (Budget + Init expense + Event)
 						</td>
 					</tr>
 				</tbody>
@@ -174,7 +174,7 @@
 							Total revenue: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz}} - Total expense: {{budget + q1.initiativeExpense + eventMoney}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity + q1.quiz)-(budget + q1.initiativeExpense + eventMoney)}}
 						</td>
 						<td>
-							Some text
+							Total Revenue - Total Expense
 						</td>
 					</tr>
 					<!-- Bonus -->
@@ -186,7 +186,7 @@
 							{{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}}
 						</td>
 						<td>
-							10% from Operation
+							10% from Operation Q1
 						</td>
 					</tr>
 				</tbody>
@@ -206,7 +206,7 @@
 							Profit: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity)-(budget + q1.initiativeExpense + eventMoney)}} + Bonus: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance + q1.initiativeRevenue + activity)-(budget + q1.initiativeExpense + eventMoney)+((q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1)}}
 						</td>
 						<td>
-							Some text
+							Profit + Bonus
 						</td>
 					</tr>
 				</tbody>
@@ -226,7 +226,7 @@
 							Operations: {{q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance}} + Bonus: {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1}} = {{(q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)+((q1.initiativeRevenue - q1.initiativeExpense + q1.startBalance)*0.1)}}
 						</td>
 						<td>
-							Start balance for next quarter
+							Start Operation for next quarter (Q2)
 						</td>
 					</tr>
 				</tbody>

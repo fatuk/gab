@@ -33,7 +33,7 @@
 							(Clean Q1 Operations + Q1 Bonus): {{q1OperationsAndBonus}} + Q2 Clean Initiatives: {{q2.initiativeRevenue - q2.initiativeExpense}} = {{q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)}}
 						</td>
 						<td>
-							Some text
+							Operation for Q2 = Operation Q1 + Bonus + Profit from Initiative Q2 (which is InitRevenue - InitExpense)
 						</td>
 					</tr>
 					<!-- Initiatives -->
@@ -45,7 +45,7 @@
 							<input type="number" ng-model="q2.initiativeRevenue">
 						</td>
 						<td>
-							Some text
+							Initiatives Revenue
 						</td>
 					</tr>
 					<!-- Activites -->
@@ -57,7 +57,7 @@
 							<input type="number" ng-model="q2.activity">
 						</td>
 						<td>
-							Some text
+							Correct answers + time bonus
 						</td>
 					</tr>
 					<!-- Quiz -->
@@ -69,7 +69,7 @@
 							<input type="number" ng-model="q2.quiz">
 						</td>
 						<td>
-							Some text
+							We do NOT reward $ for quiz
 						</td>
 					</tr>
 					<!-- Total -->
@@ -81,7 +81,7 @@
 							q2.Operations: {{q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)}} + q2.initiativeRevenue: {{q2.initiativeRevenue}} + q2.Activities: {{q2.activity}} + q2.Quiz: {{q2.quiz}} = {{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense)) + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz}}
 						</td>
 						<td>
-							Some text
+							Sum of (Operation Q2 + Init Revenue + Activity + Quiz)
 						</td>
 					</tr>
 				</tbody>
@@ -114,7 +114,7 @@
 							<input type="number" ng-model="q2.budget">
 						</td>
 						<td>
-							Some text
+							Total spend on budget items
 						</td>
 					</tr>
 					<!-- Initiatives -->
@@ -126,7 +126,7 @@
 							<input type="number" ng-model="q2.initiativeExpense">
 						</td>
 						<td>
-							Some text
+							Initiatives Expense
 						</td>
 					</tr>
 					<!-- Events -->
@@ -138,7 +138,7 @@
 							<input type="number" ng-model="q2.eventMoney">
 						</td>
 						<td>
-							Some text
+							Events Expense
 						</td>
 					</tr>
 					<!-- Total -->
@@ -150,7 +150,7 @@
 							Budget: {{q2.budget}} + Initiatives: {{q2.initiativeExpense}} + Events: {{q2.eventMoney}} = {{q2.budget + q2.initiativeExpense + q2.eventMoney}}
 						</td>
 						<td>
-							Some text
+							Sum of (Budget + Init expense + Event)
 						</td>
 					</tr>
 				</tbody>
@@ -170,7 +170,7 @@
 							Total revenue: {{q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz}} - Total expense: {{q2.budget + q2.initiativeExpense + q2.eventMoney}} = {{(q2.initiativeRevenue - q2.initiativeExpense + q2.startBalance + q2.initiativeRevenue + q2.activity + q2.quiz)-(q2.budget + q2.initiativeExpense + q2.eventMoney)}}
 						</td>
 						<td>
-							Some text
+							Total Revenue - Total Expense
 						</td>
 					</tr>
 					<!-- Bonus -->
@@ -224,7 +224,7 @@
 							{{(q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))+((q1OperationsAndBonus + (q2.initiativeRevenue - q2.initiativeExpense))*0.1)}}
 						</td>
 						<td>
-							Operations Q2 + Bonus Q2
+							Operations Q2 + Bonus Q2 (start operation for Q3)
 						</td>
 					</tr>
 				</tbody>
