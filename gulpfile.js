@@ -46,9 +46,9 @@ gulp.task('build', [
 gulp.task('copyAssets', function () {
 	'use strict';
 	gulp.src([
-		'assets/**/*.*',
-		'!assets/**/*.less'
-	])
+			'assets/**/*.*',
+			'!assets/**/*.less'
+		])
 		.pipe(gulp.dest('public'));
 });
 
@@ -67,8 +67,10 @@ gulp.task('copyViews', function () {
 gulp.task('pluginsConcat', function () {
 	gulp.src(bowerFiles)
 		.pipe(concat('plugins.min.js'))
-	// .pipe(uglify())
-	.pipe(gulp.dest('public/js'));
+		.pipe(uglify({
+			mangle: false
+		}))
+		.pipe(gulp.dest('public/js'));
 });
 
 /******************************
@@ -79,10 +81,12 @@ gulp.task('jsConcat', function () {
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(concat('app.js'))
-	// .pipe(uglify())
-	.on('error', notify.onError(function (error) {
-		return '\nAn error occurred while uglifying js.\nLook in the console for details.\n' + error;
-	}))
+		.pipe(uglify({
+			mangle: false
+		}))
+		.on('error', notify.onError(function (error) {
+			return '\nAn error occurred while uglifying js.\nLook in the console for details.\n' + error;
+		}))
 		.pipe(sourcemaps.write('../js'))
 		.pipe(gulp.dest('public/js'));
 });
