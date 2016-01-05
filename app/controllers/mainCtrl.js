@@ -16,6 +16,39 @@
 		$scope.finalResult = {};
 
 		$scope.startBalance = 250000;
+		$scope.q1.budget = 150000;
+		$scope.q1.quiz = 500000;
+		$scope.q1.eventMoney = 50000;
+		$scope.q1.initiativeRevenue = 125000;
+		$scope.q1.initiativeExpense = 75000;
+		$scope.q1.activity = 400000;
+		$scope.q1.currentBalance = 0;
+
+		$scope.q2.budget = 0;
+		$scope.q2.quiz = 0;
+		$scope.q2.eventMoney = 0;
+		$scope.q2.initiativeRevenue = 125000;
+		$scope.q2.initiativeExpense = 50000;
+		$scope.q2.activity = 0;
+		$scope.q2.currentBalance = 0;
+
+		$scope.q3.budget = 0;
+		$scope.q3.quiz = 0;
+		$scope.q3.eventMoney = 0;
+		$scope.q3.initiativeRevenue = 100000;
+		$scope.q3.initiativeExpense = 75000;
+		$scope.q3.activity = 0;
+		$scope.q3.currentBalance = 0;
+
+		$scope.q4.budget = 0;
+		$scope.q4.quiz = 0;
+		$scope.q4.eventMoney = 0;
+		$scope.q4.initiativeRevenue = 200000;
+		$scope.q4.initiativeExpense = 100000;
+		$scope.q4.activity = 0;
+		$scope.q4.currentBalance = 0;
+
+		/*$scope.startBalance = 250000;
 		$scope.q1.budget = 0;
 		$scope.q1.quiz = 0;
 		$scope.q1.eventMoney = 0;
@@ -46,7 +79,7 @@
 		$scope.q4.initiativeRevenue = 200000;
 		$scope.q4.initiativeExpense = 100000;
 		$scope.q4.activity = 0;
-		$scope.q4.currentBalance = 0;
+		$scope.q4.currentBalance = 0;*/
 
 		$scope.$watch('startBalance', function () {
 			updateAll();
