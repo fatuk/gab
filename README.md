@@ -33,7 +33,7 @@
 This boilerplate is under constraction because turn from Grunt to Gulp. But it can be used for own projects with some modernizations. Later I will add more features, such as images optimization, sprites, etc.
 
 
-[travis-image]: https://travis-ci.org/htmlacademy-javascript/150948-kekstagram.svg?branch=master
-[travis-url]: https://travis-ci.org/htmlacademy-javascript/150948-kekstagram
-[dependency-image]: https://david-dm.org/htmlacademy-javascript/150948-kekstagram.svg?style=flat-square
-[dependency-url]: https://david-dm.org/htmlacademy-javascript/150948-kekstagram
+[travis-image]: https://travis-ci.org/fatuk/gab.svg?branch=master
+[travis-url]: https://travis-ci.org/fatuk/gab
+[dependency-image]: https://david-dm.org/fatuk/gab.svg?style=flat-square
+[dependency-url]: https://david-dm.org/fatuk/gab
