@@ -10,4 +10,9 @@ install:
   - npm install
 
 script:
-  - "npm test"
+  - npm test
+
+# whitelist
+branches:
+  only:
+    - master
