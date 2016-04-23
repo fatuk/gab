@@ -10,6 +10,8 @@
 	]);
 
 	function itemService(API_PATH, $http, $q, $log) {
+		$log.log('Item service');
+
 		var service = {
 			getItem: getItem
 		};

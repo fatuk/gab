@@ -18,12 +18,7 @@
 				label: '@',
 				value: '@'
 			},
-			replace: true,
-			link: checkboxDirectiveLink
+			replace: true
 		};
-	}
-
-	function checkboxDirectiveLink(scope, el, attr) {
-
 	}
 })();

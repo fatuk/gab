@@ -9,5 +9,11 @@
 
 	function mainCtrl($scope, $log) {
 		$log.log('Main ctrl');
+
+		var a = true;
+
+		if (a) {
+			console.log(123);
+		}
 	}
 })();
