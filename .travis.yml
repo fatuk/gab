@@ -11,8 +11,3 @@ install:
 
 script:
   - npm test
-
-# whitelist
-branches:
-  only:
-    - master
